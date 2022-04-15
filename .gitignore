@@ -1,0 +1,5 @@
+lib/
+Scripts/
+.vscode/settings.json
+pyvenv.cfg
+__pycache__/
