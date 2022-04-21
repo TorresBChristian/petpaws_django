@@ -1,0 +1,129 @@
+main .carousel {
+    font-family: 'Montserrat';
+}
+main .carousel .btn {
+    color: #061437;
+    background-color: white;
+    border-radius: 10px;
+}
+main .carousel img {
+    width: 100%;
+}
+main .mascotas h3 {
+    color: #061437; font-family: 'Montserrat';
+}
+main .mascotas .card {
+    border-radius: 15px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+main .mascotas .card img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+main .mascotas .card-title {
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+main .mascotas .card .btn{
+    border-radius: 10px;
+    border-color: #032D53;
+    background-color: #FDDADA;
+    color: #032D53;
+}
+main .mascotas .btn{
+    background-color: #FFEC4E;
+    color: #032D53;
+    border-radius: 10px;
+}
+main .mascotas .card .mas{
+    color: #0779E4;
+}
+main .mascotas .card p{
+    color: #605B6A;
+    font-weight: 600;
+}
+main .modal-content {
+    width: 125%;
+    font-family: 'Roboto';
+}
+main .modal .title {
+    color: #032D53;
+    font-weight: 900;
+}
+main .modal .list-group-horizontal {
+    justify-content: center;
+    border-radius: 10px;
+}
+main .modal .list-group-item {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: none;
+    font-weight: 500;
+}
+main .modal .subtitulo{
+    color: #032D53;
+    font-weight: 600;
+}
+main .offcanvas{
+    width: 45%;
+    font-family: 'Roboto';
+}
+main .offcanvas .title {
+    color: #032D53;
+    font-weight: 900;
+    text-align: center;
+}
+main .offcanvas .subtitulo{
+    color: #032D53;
+    font-weight: 600;
+}
+main .offcanvas .list-group-horizontal {
+    justify-content: center;
+    border-radius: 10px;
+}
+main .offcanvas .list-group-item {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: none;
+    font-weight: 500;
+}
+main .registratuMascota img{
+    
+    width: 100%;
+}
+main .registratuMascota .col .register {
+    background: linear-gradient(180deg, rgba(40, 195, 212, 0.2886) 0%, rgba(40, 195, 212, 0.37) 100%);
+    height: 100%;
+}
+main .registratuMascota h3 {
+    color: #032D53;
+    font-weight: 700;
+    font-family: 'Montserrat';
+}
+main .registratuMascota .col a {
+    color: #061437;
+    background-color: white;
+    border-radius: 10px;
+}
+main .registratuMascota .col input {
+    border-color: #061437;
+    background-color: transparent;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+main .registratuMascota .col select {
+    border-color: #061437;
+    background-color: transparent;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+main .registratuMascota .col label {
+    font-weight: 600;
+    font-family: 'Montserrat';
+}
+main .registratuMascota .col textarea {
+    border-color: #061437;
+    background-color: transparent;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}

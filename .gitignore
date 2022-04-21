@@ -3,3 +3,5 @@ Scripts/
 .vscode/settings.json
 pyvenv.cfg
 __pycache__/
+.DS_STORE
+venv/

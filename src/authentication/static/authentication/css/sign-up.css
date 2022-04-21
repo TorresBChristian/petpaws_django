@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+
+main .caja {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 35%;
+    padding-top: 175px;
+}
+
+@media screen and (max-width: 768px) {
+    main .caja {
+        margin: 0 10%;
+        padding-top: 5rem;
+    }
+}
