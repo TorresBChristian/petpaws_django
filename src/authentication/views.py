@@ -19,11 +19,11 @@ def signin(request):
         else:
             messages.error(request, "Wrong username or password. Try again.")
 
-    return render(request, 'authentication/login.html')
+    return render(request, 'authentication/signin.html')
 
 def signup(request):
     if request.method == 'POST':
-        username=request.POST['email']  # to login with an email
+        username=request.POST['email']  # to signin with an email
         password=request.POST['pass1']
         password2=request.POST['pass2']
         email=request.POST['email']
