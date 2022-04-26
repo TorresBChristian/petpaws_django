@@ -42,4 +42,9 @@ def signup(request):
         return redirect('signin')
 
     return render(request, 'authentication/signup.html')
-        
+
+def adoptar(request):
+    return render(request, 'authentication/adoptar.html')
+
+def da_en_adopcion(request):
+    return render(request, 'authentication/daEnAdopcion.html')

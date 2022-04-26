@@ -29,10 +29,11 @@
     </button>
     </div>
     {% endfor %}
+    {% include './header-sin-sesion.html' %}
     <main>
         <div class="container-fluid">
             <div class="float-end m-4">
-                <a href="./" type="button" class="btn-close" aria-label="Close"></a>
+                <a href="/index" type="button" class="btn-close" aria-label="Close"></a>
             </div>
             <form action="/signin" method="POST">
             {% csrf_token %}
