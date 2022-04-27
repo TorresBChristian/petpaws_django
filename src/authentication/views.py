@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     return render(request, 'authentication/home.html')
@@ -30,10 +30,10 @@ def signup(request):
         first_name=request.POST['names']
         if password != password2:
             messages.error(request, "Passwords are different. Please try again.")
-            redirect('signin')
+            redirect('signup')
         if User.objects.filter(username=username):
             messages.error(request, "Email is already registered. Please try another email.")
-            redirect('signin')
+            redirect('signup')
 
         new_user = User.objects.create_user(username, email, password)
         new_user.first_name = first_name
@@ -43,8 +43,11 @@ def signup(request):
 
     return render(request, 'authentication/signup.html')
 
+def signout(request):
+    logout(request)
+
 def adoptar(request):
     return render(request, 'authentication/adoptar.html')
 
 def da_en_adopcion(request):
-    return render(request, 'authentication/daEnAdopcion.html')
+    return render(request, 'authentication/da_en_adopcion.html')

@@ -29,7 +29,12 @@
     </button>
     </div>
     {% endfor %}
-    {% include './header-sin-sesion.html' %}
+    {{request.user.is_authenticated}}
+    {% if request.user.is_authenticated %}
+        {% include './header-con-sesion.html' %}
+    {% else %}
+        {% include './header-sin-sesion.html' %}
+    {% endif%}
     <main class="mt-5">
         <div id="carouselExampleCaptions mt-5 pt-5" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
