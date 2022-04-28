@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PET PAWS</title>
+    <title>PET'S PAWS</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -33,9 +33,9 @@
                 <li><a href="da_en_adopcion">DAR EN ADOPCIÓN</a></li>
                 <li><a href="#">COMPRAR</a></li>
                 <li><div class="dropdown">
-                        <button class="dropbtn"><img src="{% static 'authentication/public/assets/icon-person.png' %}" width="30px"> {{name}} </button>
+                        <button class="dropbtn"><img src="{% static 'authentication/public/assets/icon-person.png' %}" width="30px"> {{user.first_name}} </button>
                         <div class="dropdown-content">
-                            <a href="/index">Cerrar Sesión</a>
+                            <a href="/signout">Cerrar Sesión</a>
                         </div>
                     </div>
                 </li>
