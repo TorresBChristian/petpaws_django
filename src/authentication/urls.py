@@ -8,5 +8,4 @@ urlpatterns = [
     path('adoptar', views.adoptar, name='adoptar'),
     path('da_en_adopcion', views.da_en_adopcion, name='da_en_adopcion'),
     path('signout', views.signout, name='signout'),
-    path('', views.base_index, name='base_index'),
 ]

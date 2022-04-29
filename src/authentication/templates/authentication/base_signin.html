@@ -1,0 +1,42 @@
+{% extends "authentication/base.html" %}
+
+{% load static %}
+
+{% block styles %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'authentication/css/signin_signup.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<body>
+    <main>
+        <div class="container-fluid">
+            <form action="/signin" method="POST">
+            {% csrf_token %}
+                <div class="container">
+                    <div class="caja">
+                        <h3 class="text-center fw-bold my-4">Iniciar Sesión</h3>
+                        <div class="text-center">
+                            <p class="d-inline">¿Eres nuevo en este sitio?</p>
+                            <a href="signup"><p class="d-inline" style="color: #061437; font-weight: 600;">Regístrate</p></a> 
+                        </div>           
+                        <div class="my-3">
+                            <label for="exampleFormControlInput1" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" name="email" id="email" value="c@c.c">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" name="password" id="password" value="c">
+                        </div>
+                        <div class="text-center my-4">
+                            <input type="submit" class="btn px-4 py-2" name="submit" style="background-color: #FFEC4E; color: #061437;" value="INICIAR SESIÓN">
+                        </div>
+                    </div>
+                </div>
+            </form>   
+        </div>
+    </main>
+</body>
+
+</html>
+{% endblock %}

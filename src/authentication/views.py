@@ -4,9 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 def index(request):
-    return render(request, 'authentication/home.html')
-
-def base_index(request):
     return render(request, 'authentication/base_index.html')
 
 def signin(request):
@@ -22,7 +19,7 @@ def signin(request):
         else:
             messages.error(request, "Wrong username or password. Try again.")
 
-    return render(request, 'authentication/signin.html')
+    return render(request, 'authentication/base_signin.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -44,7 +41,7 @@ def signup(request):
         messages.success(request, "Account created sucessfully.")
         return redirect('signin')
 
-    return render(request, 'authentication/signup.html')
+    return render(request, 'authentication/base_signup.html')
 
 def signout(request):
     logout(request)

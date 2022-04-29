@@ -1,6 +1,12 @@
 {% extends "authentication/base.html" %}
 
 {% load static %}
+
+{% block styles %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'authentication/css/home.css' %}">
+{% endblock styles %}
+
 {% block content %}
     <main class="mt-5">
         <div id="carouselExampleCaptions mt-5 pt-5" class="carousel slide" data-bs-ride="carousel">
