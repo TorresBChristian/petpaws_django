@@ -1,6 +1,6 @@
 lib/
 Scripts/
-.vscode/settings.json
+.vscode/
 pyvenv.cfg
 __pycache__/
 .DS_STORE

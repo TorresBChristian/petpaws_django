@@ -17,9 +17,9 @@ def signin(request):
             messages.success(request, "Logged in sucessfully.")
             return redirect('/index')
         else:
-            messages.error(request, "Wrong username or password. Try again.")
+            messages.warning(request, "Wrong username or password. Try again.")
 
-    return render(request, 'authentication/base_signin.html')
+    return render(request, 'authentication/base_signin.html') 
 
 def signup(request):
     if request.method == 'POST':
@@ -29,10 +29,10 @@ def signup(request):
         email=request.POST['email']
         first_name=request.POST['names']
         if password != password2:
-            messages.error(request, "Passwords are different. Please try again.")
+            messages.warning(request, "Passwords are different. Please try again.")
             redirect('signup')
         if User.objects.filter(username=username):
-            messages.error(request, "Email is already registered. Please try another email.")
+            messages.warning(request, "Email is already registered. Please try another email.")
             redirect('signup')
 
         new_user = User.objects.create_user(username, email, password)
