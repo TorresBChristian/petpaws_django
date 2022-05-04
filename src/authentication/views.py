@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.utils import timezone
+from authentication.models import PetPost
 
 def index(request):
     return render(request, 'authentication/base_index.html')
@@ -19,7 +21,7 @@ def signin(request):
         else:
             messages.warning(request, "Wrong username or password. Try again.")
 
-    return render(request, 'authentication/base_signin.html') 
+    return render(request, 'authentication/base_signin.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -50,5 +52,24 @@ def signout(request):
 def adoptar(request):
     return render(request, 'authentication/adoptar.html')
 
-def da_en_adopcion(request):
-    return render(request, 'authentication/da_en_adopcion.html')
+def dar_en_adopcion(request):
+    if request.method == 'POST':
+        pet_name = request.POST['name']
+        pet_size = request.POST['size']
+        pet_age = request.POST['age']
+        pet_gender = request.POST['gender']
+        post_desc = request.POST['description']
+        post_picture = request.POST['picture']
+        post_pub = timezone.now()
+        owner_name = request.POST['owner_name']
+        owner_lastname = request.POST['owner_lastname']
+        owner_email = request.POST['owner_email']
+        owner_phonenumber = request.POST['owner_phonenumber']
+
+        new_post = PetPost.objects.create_user(pet_name, pet_size, pet_age, pet_gender, post_desc,
+                                               post_picture, post_pub, owner_name, owner_lastname,
+                                               owner_email, owner_phonenumber)
+        new_post.save()
+        messages.success(request, "Pet adoption posted sucessfully.")
+        return redirect('adoptar')
+    return render(request, 'authentication/dar_en_adopcion.html')

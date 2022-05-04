@@ -8,8 +8,8 @@
 {% endblock styles %}
 
 {% block content %}
-<main class="mt-5">
-    <div id="carouselExampleCaptions mt-5 pt-5" class="carousel slide" data-bs-ride="carousel">
+<main class="mt-0">
+    <div id="carouselExampleCaptions mt-5 pt-5" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -38,11 +38,11 @@
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -67,7 +67,7 @@
                         <h3 class="text-center">ENCUÉNTRALE UNA FAMILIA A TU MASCOTA</h3>
                     </div>
                     <div class="mb-4 mt-5 container text-center">
-                        <a href="daEnAdopcion.php" class="btn px-5 py-3 fw-bold"><b>LLENAR ADOPCIÓN</b></a>
+                        <a href="/dar_en_adopcion" class="btn px-5 py-3 fw-bold"><b>LLENAR ADOPCIÓN</b></a>
                     </div>
                     
                 </div>
