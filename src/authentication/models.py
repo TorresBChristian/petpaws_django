@@ -1,8 +1,11 @@
 from django.db import models
+from django.forms import ModelForm
+
+pet_sizes = ["Pequeño", "Mediano", "Grande"]
 
 class PetPost(models.Model):
     pet_name = models.CharField(max_length=50)
-    pet_size = models.CharField(max_length=50)
+    pet_size = models.CharField(max_length=50, choices=pet_sizes)
     pet_age = models.IntegerField()
     pet_gender = models.CharField(max_length=50)
     post_description = models.CharField(max_length=400)
@@ -15,3 +18,8 @@ class PetPost(models.Model):
 
     def __str__(self):
         return self.pet_name
+
+class PetPostForm(ModelForm):
+    class Meta:
+        model = PetPost
+        fields = ["pet_name", "pet_size", "pet_age", "pet_gender", "post_description", "post_picture", "post_publication", "owner_name", "owner_lastname", "owner_email", "owner_phonenumber"]
