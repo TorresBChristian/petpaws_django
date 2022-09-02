@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from authentication.models import PetPost
-from authentication.models import PetPostForm
+# from authentication.models import PetPostForm
 
 def index(request):
     return render(request, 'authentication/base_index.html')
@@ -53,6 +53,8 @@ def signout(request):
 def adoptar(request):
     return render(request, 'authentication/adoptar.html')
 
+# TODO convert forms "dar en adopcion" from type "model" to type "modelforms"
+# TODO upload picture doesn't work
 def dar_en_adopcion(request):
     if request.method == 'POST':
         pet_name = request.POST['name']
@@ -67,10 +69,20 @@ def dar_en_adopcion(request):
         owner_email = request.POST['owner_email']
         owner_phonenumber = request.POST['owner_phonenumber']
 
-        new_post = PetPostForm(pet_name=pet_name, pet_size=pet_size, pet_age=pet_age, pet_gender=pet_gender,
-                           post_description=post_desc, post_picture=post_picture,
-                           post_publication=post_pub, owner_name=owner_name, owner_lastname=owner_lastname,
-                           owner_email=owner_email, owner_phonenumber=owner_phonenumber)
+        new_post = PetPost(
+        # new_post = PetPostForm(
+            pet_name=pet_name,
+            pet_size=pet_size,
+            pet_age=pet_age,
+            pet_gender=pet_gender,
+            post_description=post_desc,
+            post_picture=post_picture,
+            post_publication=post_pub,
+            owner_name=owner_name,
+            owner_lastname=owner_lastname,
+            owner_email=owner_email,
+            owner_phonenumber=owner_phonenumber
+            )
         new_post.save()
         messages.success(request, "Pet adoption posted sucessfully.")
         return redirect('adoptar')

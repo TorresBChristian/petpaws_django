@@ -1,8 +1,7 @@
-lib/
-Scripts/
-.vscode/
-pyvenv.cfg
 __pycache__/
 .DS_STORE
-venv/
+.vscode/
+.venv/
+lib/
 migrations/
+pyvenv.cfg
