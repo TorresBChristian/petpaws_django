@@ -26,21 +26,20 @@
                                 <h3 class="text-center">REGISTRA A TU MASCOTA</h3>
                             </div>
                             <div>
-                                {{ form_mascota }}
                                 <div class="row mt-3 px-4">
                                     <div class="col">
                                         <label for="name" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="Ingresar nombre de su mascota" name="name" id="name" value="Max" required>
+                                        <input type="text" class="form-control" placeholder="Ingresar nombre de su mascota" name="pet_name" id="pet_name" value="Pete" required>
                                     </div>
                                     <div class="col">
                                         <label for="age" class="form-label">Edad</label>
-                                        <input type="text" class="form-control" placeholder="Ingresar la edad aproximada" name="age" id="age" value="4" required>
+                                        <input type="text" class="form-control" placeholder="Ingresar la edad aproximada" name="pet_age" id="pet_age" value="4" required>
                                     </div>
                                 </div>
                                 <div class="row mt-3 px-4">
                                     <div class="col">
                                         <label for="tamaño" class="form-label">Tamaño</label>
-                                            <select class="form-select" name="size" id="size" value="Pequeño"required>
+                                            <select class="form-select" name="pet_size" id="pet_size" value="Pequeño"required>
                                             <option>Pequeño</option>
                                             <option>Mediano</option>
                                             <option>Grande</option>
@@ -48,7 +47,7 @@
                                     </div>
                                     <div class="col">
                                         <label for="sexo" class="form-label">Sexo</label>
-                                        <select class="form-select" name="gender" id="gender" value="Macho"required>
+                                        <select class="form-select" name="pet_gender" id="pet_gender" value="Macho"required>
                                         <option>Macho</option>
                                         <option>Hembra</option>
                                     </select>
@@ -57,17 +56,20 @@
                                 <div class="row mt-3 px-4">
                                     <div class="col">
                                         <label for="descripción" class="form-label">Descripción</label>
-                                        <textarea class="form-control" name="description" id="description" rows="1">Gato</textarea>
+                                        <textarea class="form-control" name="pet_description" id="pet_description" rows="1">Gato</textarea>
                                         
                                     </div>
+                                    {% comment %} <div class="col">
+                                        <label for="imagen" class="form-label">Imagen</label>
+                                        <input type="text" class="form-control" placeholder="Imagen" name="pet_picture" id="pet_picture" value="imagen" required>
+                                    </div> {% endcomment %}
                                     <div class="col">
                                         <label for="archivo" class="form-label">Imagen</label>
-                                        <input type="file" class="form-control" name="picture" id="picture">
+                                        <input type="file" class="form-control" name="pet_picture" id="pet_picture">
                                     </div>
                                 </div>
                             </div>
-                            <h3 class="text-center my-4">AHORA TE TOCA A TÍ</h3>
-                            {{ form_dueño }}
+                            <h3 class="text-center my-4">AHORA TE TOCA A TI</h3>
                             <div class="row mt-3 px-4">
                                 <div class="col">
                                     <label for="nameP" class="form-label">Nombre</label>
