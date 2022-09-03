@@ -50,11 +50,12 @@ def signout(request):
     return redirect('index')
 
 
-def adoptar(request):
-    return render(request, 'authentication/adoptar.html')
+def adopt(request):
+    posts = PetPost.objects.all()
+    # print(posts.name)
+    return render(request, 'authentication/adoptar.html', {'posts': posts})
 
 
-# TODO upload picture doesn't work
 def give_up_for_adoption(request):
     if request.method == 'POST':
         pet_post = PetPost(

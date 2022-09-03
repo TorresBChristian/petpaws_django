@@ -14,21 +14,21 @@
                     <img src="{% static 'authentication/public/assets/adoptar1.png' %}" class="d-block img-fluid" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h1 class="fw-bold text-start" style="color: #fccfcf">Encuentra a tu </h1>
-                        <h1 class="fw-bold text-light">COMPAÑERO(A) DE VIDA</h1>
+                        <h1 class="fw-bold text-light">COMPAÑERO DE VIDA</h1>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="{% static 'authentication/public/assets/adoptar2.png' %}" class="d-block img-fluid" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h1 class="fw-bold text-start" style="color: #FDDADA">Encuentra a tu </h1>
-                    <h1 class="fw-bold text-light">COMPAÑERO(A) DE VIDA</h1>
+                    <h1 class="fw-bold text-light">COMPAÑERO DE VIDA</h1>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="{% static 'authentication/public/assets/adoptar3.png' %}" class="d-block img-fluid" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h1 class="fw-bold text-start" style="color: #FDDADA">Encuentra a tu </h1>
-                    <h1 class="fw-bold text-light">COMPAÑERO(A) DE VIDA</h1>
+                    <h1 class="fw-bold text-light">COMPAÑERO DE VIDA</h1>
                     </div>
                 </div>
             </div>
@@ -41,112 +41,92 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        
+        {% for p in posts %}
+            <div class="container mascotas my-5">
+                <div class="row mx-0 mt-4">
+                    
+                    <!-- AVISO EN CARD GRID -->
+                    <div class="col-6 col-sm-4 my-3">
+                        <div class="card" style="width: 95%;">
+                            <img src="{{ p.pet_picture.url }}" height="210px" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">{{ p.pet_name }}</h5>
+                                <p class="card-text mb-0">Edad: {{ p.pet_age }} años</p>
+                                <p class="card-text mb-0">Sexo: {{ p.pet_gender }}</p>
+                                <div class="row mx-0">
+                                    <div class="col-12 col-sm-6 px-0 mt-2">
+                                        <a href="#" class="mas px-0 fw-normal text-decoration-none" data-bs-toggle="modal" data-bs-target="#Modal{{ p.id }}">Conóceme más</a>
+                                    </div>
+                                    <div class="col-12 col-sm-6 px-0">
+                                        <a href="#" class="btn py-1 px-4 fw-bold" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight{{ p.id }}" aria-controls="offcanvasRight">ADOPTAR</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="container mascotas my-5">
-            <div class="row mx-0 mt-4">
-            <?php
-                // VARIABLES MASCOTAS A ADOPTAR
-                $con=mysqli_connect('localhost','root','','petpaws');
-                mysqli_set_charset($con, 'utf8');
-                $query=mysqli_query($con, "SELECT * FROM mascota");
-                $numrows=mysqli_num_rows($query);
-                if($numrows!=0) {
-                    while($row=mysqli_fetch_assoc($query)) {
-                        $dbid = $row['id_mascota'];
-                        $dbnombre = $row['nombre'];
-                        $dbedad = $row['edad'];
-                        $dbtamaño = $row['tamaño'];
-                        $dbsexo = $row['sexo'];
-                        $dbdescripcion = $row['descripcion'];
-                        $dbimagen = 'uploads/'.$row["imagen"];
-                        $dbnameP = $row['nameP'];
-                        $dblastName = $row['lastName'];
-                        $dbemail = $row['email'];
-                        $dbcontacto = $row['contacto'];
+                    <!-- MODAL DE CADA AVISO -->
+                    <div class="modal fade" id="Modal{{ p.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content mt-4">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h4 class="title text-center mt-4" id="exampleModalLabel">{{ p.pet_name }}</h4>
+                                    <ul class="list-group list-group-horizontal mt-2">
+                                        <li class="list-group-item" style="border-right: 2px solid rgba(196, 196, 196, 1);">Sexo: {{ p.pet_gender }}</li>
+                                        <li class="list-group-item" style="border-right: 2px solid rgba(196, 196, 196, 1);">EDAD: {{ p.pet_age }} años</li>
+                                        <li class="list-group-item">TAMAÑO: {{ p.pet_size }}</li>
+                                    </ul>
+                                    <div class="row mx-0 my-3">
+                                        <div class="col-12 col-sm-7">
+                                            <p class="mb-0 subtitulo">¡HOLA!</p>
+                                            <p style="align-content: justified;">{{ p.pet_description }}</p>
+                                        </div>
+                                        <div class="col-12 col-sm-5">
+                                            <img class="mb-3" src="{{ p.pet_picture.url }}" width="100%" style="border-radius: 15px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        // AVISO EN CARD GRID
-                        echo '<div class="col-6 col-sm-4 my-3">';
-                        echo '<div class="card" style="width: 95%;">';
-                        echo '        <img src="', $dbimagen, '" height="210px" class="card-img-top" alt="...">';
-                        echo '        <div class="card-body">';
-                        echo '            <h5 class="card-title fw-bold">', $dbnombre, '</h5>';
-                        echo '            <p class="card-text mb-0">Edad: ', $dbedad, ' años</p>';
-                        echo '            <p class="card-text mb-0">Sexo: ', $dbsexo, '</p>';
-                        echo '                <div class="row mx-0">';
-                        echo '                    <div class="col-12 col-sm-6 px-0 mt-2">';
-                        echo '                        <a href="#" class="mas px-0 fw-normal text-decoration-none" data-bs-toggle="modal" data-bs-target="#Modal', $dbid, '">Conóceme más</a>';
-                        echo '                    </div>';
-                        echo '                    <div class="col-12 col-sm-6 px-0">';
-                        echo '                        <a href="#" class="btn py-1 px-4 fw-bold" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight', $dbid, '" aria-controls="offcanvasRight">ADOPTAR</a>';
-                        echo '                    </div>';
-                        echo '                </div>';
-                        echo '        </div>';
-                        echo '    </div>';
-                        echo '</div>';
-
-                        // MODAL DE CADA AVISO
-                        echo '<div class="modal fade" id="Modal', $dbid, '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
-                        echo '    <div class="modal-dialog">';
-                        echo '        <div class="modal-content mt-4">';
-                        echo '           <div class="modal-body">';
-                        echo '                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>';
-                        echo '                <h4 class="title text-center mt-4" id="exampleModalLabel">', $dbnombre, '</h4>';
-                        echo '                <ul class="list-group list-group-horizontal mt-2">';
-                        echo '                    <li class="list-group-item" style="border-right: 2px solid rgba(196, 196, 196, 1);">Sexo: ', $dbsexo, '</li>';
-                        echo '                    <li class="list-group-item" style="border-right: 2px solid rgba(196, 196, 196, 1);">EDAD: ', $dbedad, ' años</li>';
-                        echo '                    <li class="list-group-item">TAMAÑO: ', $dbtamaño, '</li>';
-                        echo '                </ul>';
-                        echo '                <div class="row mx-0 my-3">';
-                        echo '                    <div class="col-12 col-sm-7">';
-                        echo '                        <p class="mb-0 subtitulo">¡HOLA!</p>';
-                        echo '                        <p style="align-content: justified;">', $dbdescripcion, '</p>';
-                        echo '                    </div>';
-                        echo '                    <div class="col-12 col-sm-5">';
-                        echo '                        <img class="mb-3" src="', $dbimagen, '" width="100%" style="border-radius: 15px;">';
-                        echo '                    </div>';
-                        echo '                </div>';
-                        echo '            </div>';
-                        echo '        </div>';
-                        echo '    </div>';
-                        echo '</div>';
-
-                        // OFFCANVAS DE CADA AVISO
-                        echo '<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight', $dbid, '" aria-labelledby="offcanvasRightLabel">';
-                        echo '    <div class="offcanvas-header">';
-                        echo '        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>';
-                        echo '    </div>';
-                        echo '    <div class="offcanvas-body">';
-                        echo '        <h4 class="title" id="offcanvasRightLabel">', strtoupper($dbnombre), '</h4>';
-                        echo '        <ul class="list-group list-group-horizontal mt-2">';
-                        echo '            <li class="list-group-item" style="border-right: 2px solid rgba(196, 196, 196, 1);">Sexo: ', $dbsexo, '</li>';
-                        echo '            <li class="list-group-item" style="border-right: 2px solid rgba(196, 196, 196, 1);">EDAD: ', $dbedad, ' años</li>';
-                        echo '            <li class="list-group-item">TAMAÑO: ', $dbtamaño, '</li>';
-                        echo '        </ul>';
-                        echo '       <div class="row mx-0 my-2">';
-                        echo '            <div class="col col-md-6">';
-                        echo '               <p class="mb-0 mt-3 subtitulo">¡HOLA!</p>';
-                        echo '               <p>Puedes llamarme ', $dbnombre, '. Gracias por adoptarme. Lo siguiente que debes hacer es contactar con mi dueño</p>';
-                        echo '               <p class="subtitulo">MI DUEÑO TEMPORAL:</p>';
-                        echo '               <p class="mb-0 px-3">', $dbnameP, ' ', $dblastName, '</p>';
-                        echo '               <p class="mb-0 px-3">', $dbcontacto, '</p>';
-                        echo '               <p class="mb-0 px-3">', $dbemail, '</p>';
-                        echo '            </div>';
-                        echo '            <div class="col col-md-6">';
-                        echo '                <img class="mb-3 mt-3" src="', $dbimagen, '" width="100%" style="border-radius: 15px;">';
-                        echo '            </div>';
-                        echo '        </div>';
-                        echo '        <p class="mb-0 subtitulo">PROCESO</p>';
-                        echo '        <ul>';
-                        echo '            <li>Completa el siguiente formulario: <a href="https://forms.gle/2Dg2mVAV1HnjCYe4A ">https://forms.gle/2Dg2mVAV1HnjCYe4A </a>y envíalo al correo del dueño.</li>';
-                        echo '            <li>En las siguientes 24 horas, el dueño se pondrá en contacto contigo para indicarte el resultado de tu solicitud de adopción y los pasos a seguir.</li>';
-                        echo '            <li>Asume el compromiso de mantenerlo, alimentarlo, cuidarlo, respetarlo, darle cariño y velar por su salud.</li>';
-                        echo '            <li>Asegúrate de estar preparado para esta responsabilidad antes de solicitar la adopción.</li>';
-                        echo '        </ul>';
-                        echo '    </div>';
-                        echo '</div>';
-                    }
-                }
-            ?>
-            
+                    <!-- OFFCANVAS DE CADA AVISO -->
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight{{ p.id }}" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <h4 class="title" id="offcanvasRightLabel"{{ p.pet_name }}></h4>
+                            <ul class="list-group list-group-horizontal mt-2">
+                                <li class="list-group-item" style="border-right: 2px solid rgba(196, 196, 196, 1);">Sexo: {{ p.pet_gender }}</li>
+                                <li class="list-group-item" style="border-right: 2px solid rgba(196, 196, 196, 1);">EDAD: {{ p.pet_age }} años</li>
+                                <li class="list-group-item">TAMAÑO: {{ p.pet_size }}</li>
+                            </ul>
+                            <div class="row mx-0 my-2">
+                                <div class="col col-md-6">
+                                    <p class="mb-0 mt-3 subtitulo">¡HOLA!</p>
+                                    <p>Puedes llamarme {{ p.pet_name }}. Gracias por adoptarme. Lo siguiente que debes hacer es contactar con mi dueño</p>
+                                    <p class="subtitulo">MI DUEÑO TEMPORAL:</p>
+                                    <p class="mb-0 px-3">{{ p.owner_name }} {{ p.owner_lastname }}</p>
+                                    <p class="mb-0 px-3">{{ p.owner_phonenumber }}</p>
+                                    <p class="mb-0 px-3">{{ p.owner_email }}</p>
+                                </div>
+                                <div class="col col-md-6">
+                                    <img class="mb-3 mt-3" src="{{ p.pet_picture.url }}" width="100%" style="border-radius: 15px;">
+                                </div>
+                            </div>
+                            <p class="mb-0 subtitulo">PROCESO</p>
+                            <ul>
+                                <li>Completa el siguiente formulario: <a href="https://forms.gle/2Dg2mVAV1HnjCYe4A ">https://forms.gle/2Dg2mVAV1HnjCYe4A </a>y envíalo al correo del dueño.</li>
+                                <li>En las siguientes 24 horas, el dueño se pondrá en contacto contigo para indicarte el resultado de tu solicitud de adopción y los pasos a seguir.</li>
+                                <li>Asume el compromiso de mantenerlo, alimentarlo, cuidarlo, respetarlo, darle cariño y velar por su salud.</li>
+                                <li>Asegúrate de estar preparado para esta responsabilidad antes de solicitar la adopción.</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </main>
 {% endblock%}
